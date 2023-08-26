@@ -21,7 +21,9 @@ function Task() {
   const searchVisible = false;
 
   const getTask = async () => {
-     axios.get(`/api/tasks/${taskId}`,
+     axios.get(`/api/tasks/${taskId}`,{headers:{ 
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`
+  }}
      ).then((res) => {
         setName(res.data.name);
         setDescription(res.data.description);
@@ -38,7 +40,9 @@ function Task() {
   }
 
   const deleteTask = async() => {
-    axios.post(`/api/tasks/delete/${taskId}`
+    axios.post(`/api/tasks/delete/${taskId}`,{headers:{ 
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`
+  }}
     ).then(() => {
         navigate('/home');
       },fail => {
