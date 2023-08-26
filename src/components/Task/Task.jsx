@@ -40,7 +40,7 @@ function Task() {
   }
 
   const deleteTask = async() => {
-    axios.post(`/api/tasks/delete/${taskId}`,{headers:{ 
+    axios.post(`/api/tasks/delete/${taskId}`,{},{  headers:{ 
       Authorization: `Bearer ${sessionStorage.getItem("token")}`
   }}
     ).then(() => {
@@ -51,7 +51,9 @@ function Task() {
   }
 
   const updateStatus = async() => {
-    axios.post(`/api/tasks/update/${taskId}/status`
+    axios.post(`/api/tasks/update/${taskId}/status`,{},{headers:{ 
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`
+  }}
     ).then(() => {
       getTask();
     },
