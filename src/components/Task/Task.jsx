@@ -21,7 +21,7 @@ function Task() {
   const searchVisible = false;
 
   const getTask = async () => {
-     axios.get(`/api/tasks/${taskId}`,{headers:{ 
+     axios.get(`/api/tasks/${taskId}`,{headers:{
       Authorization: `Bearer ${sessionStorage.getItem("token")}`
   }}
      ).then((res) => {
@@ -40,7 +40,7 @@ function Task() {
   }
 
   const deleteTask = async() => {
-    axios.post(`/api/tasks/delete/${taskId}`,{},{  headers:{ 
+    axios.post(`/api/tasks/delete/${taskId}`,{},{headers:{
       Authorization: `Bearer ${sessionStorage.getItem("token")}`
   }}
     ).then(() => {
@@ -51,7 +51,7 @@ function Task() {
   }
 
   const updateStatus = async() => {
-    axios.post(`/api/tasks/update/${taskId}/status`,{},{headers:{ 
+    axios.post(`/api/tasks/update/${taskId}/status`,{},{headers:{
       Authorization: `Bearer ${sessionStorage.getItem("token")}`
   }}
     ).then(() => {
@@ -83,7 +83,7 @@ function Task() {
               <h5 className="task-hours">Days left: {daysLeft}</h5>
               <p className="task-hours">Due: {endDate}</p>
               <p className="task-hours">Status: {status}</p>
-              {status != "DONE" &&
+              {status == "IN_PROGRESS" &&
                 <button className='done-button' onClick={updateStatus}>Done</button>
               } 
             </div>

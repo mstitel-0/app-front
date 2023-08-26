@@ -17,7 +17,7 @@ function Home() {
   const jwt = sessionStorage.getItem("token");
  
   const getTasks = async () => {
-    axios.get('/api/tasks/all',{headers:{ 
+    axios.get('/api/tasks/all',{headers:{
       Authorization: `Bearer ${sessionStorage.getItem("token")}`
   }}
       ).then((res) => {

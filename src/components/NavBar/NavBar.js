@@ -20,7 +20,7 @@ function NavBar({ setTasks, searchVisible, getTasks }) {
         });
   }
   const search = async() => {
-    axios.get(`/api/tasks/search/${name}`,{headers:{ 
+    axios.get(`/api/tasks/search/${name}`,{headers:{
       Authorization: `Bearer ${sessionStorage.getItem("token")}`
   }}
       ).then((res) => {

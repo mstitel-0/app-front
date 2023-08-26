@@ -22,15 +22,14 @@ export const AddWIndow = ( { openModal, setOpenModal, getTasks, tasks} ) => {
                 name: name,
                 description: description,
                 endDate: endDate
-        },{headers:{ 
+        },{headers:{
             Authorization: `Bearer ${sessionStorage.getItem("token")}`
-        }}).then((data) => {
+        }} ).then(() => {
             setTaskAdded(true);
             getTasks();
             setTimeout(() => {
                 setOpenModal(false);
             }, 2000);
-            console.log(data);
         }).catch((error) => {
             setTaskDeclined(true);
             setTimeout(() => {

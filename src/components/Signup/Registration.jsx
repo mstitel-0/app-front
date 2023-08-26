@@ -15,7 +15,7 @@ function Registration(){
             email: email,
             password: password
         }).then( () => {
-            axios.post("/api/auth/signin", {
+            axios.post("/api/auth/login", {
                 username: username,
                 password: password,
             }).then((res) => {

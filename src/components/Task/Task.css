@@ -20,6 +20,14 @@
   flex-direction: column;
   position: relative;
 }
+.task-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  color: gray;
+}
 
 .navBar{
   margin-bottom: 60px;
