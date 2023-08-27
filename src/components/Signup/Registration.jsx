@@ -8,6 +8,7 @@ function Registration(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const [failMsg, setFailMsg]= useState("Something went wrong");
 
     const signup = async() => {
         axios.post("/api/auth/signup",{
@@ -22,12 +23,13 @@ function Registration(){
                 sessionStorage.setItem("token",res.data.token);
                 navigate('/home');
             }, fail => {
-                alert("Incorrect data");
-                console.error(fail);
+                alert("Incorrect login or password");
             })
             }, fail => {
-                alert("Something went wrong");
-                console.log(fail);
+                if(fail.response.data.message != ""){   
+                    setFailMsg(fail.response.data.message);
+                }
+                alert(failMsg);
             })
     }   
 

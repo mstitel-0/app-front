@@ -35,8 +35,11 @@ export const AddWIndow = ( { openModal, setOpenModal, getTasks, tasks} ) => {
             setTaskDeclined(true);
             setTimeout(() => {
                 setOpenModal(false);
-            }, 2000);   
-            setFailMsg(fail.response.data.message);
+            }, 2000);
+            if(fail.response.data.message != ""){   
+                setFailMsg(fail.response.data.message);
+            }
+            alert(failMsg);
         });
     }
 
