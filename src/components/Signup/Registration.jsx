@@ -8,8 +8,6 @@ function Registration(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [failMsg, setFailMsg]= useState("Something went wrong");
-
     const signup = async() => {
         axios.post("/api/auth/signup",{
             username: username,
@@ -26,10 +24,12 @@ function Registration(){
                 alert("Incorrect login or password");
             })
             }, fail => {
-                if(fail.response.data.message != ""){   
-                    setFailMsg(fail.response.data.message);
+                console.log(fail);
+                if(fail.response.data.message == ""){  
+                    alert("Something went wrong");
+                }else{
+                    alert(fail.response.data.message);
                 }
-                alert(failMsg);
             })
     }   
 

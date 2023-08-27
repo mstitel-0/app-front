@@ -11,7 +11,7 @@ export const AddWIndow = ( { openModal, setOpenModal, getTasks, tasks} ) => {
     const [taskAdded, setTaskAdded] = useState(false);
     const [taskDeclined, setTaskDeclined] = useState(false);
     const currentDate = new Date().toISOString().split("T")[0];
-    const [failMsg, setFailMsg] = useState("Something went wrong");
+    const [failMsg, setFailMsg] = useState("");
 
 
     const closeDialog = () =>{
@@ -32,14 +32,18 @@ export const AddWIndow = ( { openModal, setOpenModal, getTasks, tasks} ) => {
                 setOpenModal(false);
             }, 2000);
         }, fail => {
+            console.log(fail.response.data);
+            if(fail.response.data.message != null){   
+                setFailMsg(fail.response.data.message);
+            }
+            else{
+                setFailMsg("Something wetn wrong");
+            }
             setTaskDeclined(true);
             setTimeout(() => {
                 setOpenModal(false);
             }, 2000);
-            if(fail.response.data.message != ""){   
-                setFailMsg(fail.response.data.message);
-            }
-            alert(failMsg);
+            
         });
     }
 
