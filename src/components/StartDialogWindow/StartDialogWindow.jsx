@@ -27,7 +27,7 @@ function StartDialogWindow( { setOpenStartDialogWindow, getTask } ) {
         {!taskStarted && (
             <div className='modal-container'>
                 <label>Due: </label>
-                    <input type="date" className="modal-input" maxLength="10"  placeholder="Date" min={currentDate}required value={endDate} 
+                    <input type="date" className="modal-input"  placeholder="Date" min={currentDate}required value={endDate} 
                         onChange={(event) => {
                             setEndDate(event.target.value);
                         }}
